@@ -1,0 +1,25 @@
+name: Verificar front-end
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar sintaxe
+        run: npm run check
+      - name: Testar regras do protótipo
+        run: npm test
+      - name: Gerar arquivos estáticos
+        run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: govsafe360-front-end
+          path: dist/

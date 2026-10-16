@@ -1,0 +1,15 @@
+{
+  "name": "govsafe-360",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Protótipo acadêmico front-end de uma central de chamados de TI.",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check src/app.js && node --check src/domain.js && node --check src/icons.js"
+  },
+  "engines": { "node": ">=20" }
+}
