@@ -2,6 +2,8 @@
 
 Data: 16/10/2026, America/Cuiaba. Somente front-end; dados fictícios.
 
+Para avaliar pelos cinco critérios de dois pontos, consulte a [conferência pela rubrica](entrega/RUBRICA.md), com links diretos às evidências e aos marcos do processo.
+
 | Exigência | Evidência verificável |
 | --- | --- |
 | 1. URL Vercel funcional | [ECO-TI publicado](https://eco-ti-dusky.vercel.app/), [verificação pública](entrega/resultados/publicacao-verificada.json) e [Publicação](entrega/PUBLICACAO.md) |

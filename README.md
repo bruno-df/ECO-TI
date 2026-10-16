@@ -8,6 +8,8 @@ Projeto acadêmico somente front-end, responsivo, independente do SIGD e sem ví
 
 O índice das seis entregas está em [EVIDENCIAS.md](EVIDENCIAS.md). A pasta [entrega/](entrega/) reúne manifesto com URLs/hash/estado remoto, relatório PDF de até cinco páginas, matriz de autonomia com cinco cenários, dois prints ECO-TI, resultados locais, vídeo e trace Playwright.
 
+A [conferência pela rubrica](entrega/RUBRICA.md) relaciona cada um dos cinco critérios às evidências, aos riscos, às revisões e ao histórico do projeto.
+
 Publicação e CI remota só são consideradas concluídas quando verificadas. Consulte `entrega/manifesto.json` e [PUBLICACAO.md](entrega/PUBLICACAO.md).
 
 ## Executar e testar

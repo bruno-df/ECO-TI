@@ -1,6 +1,6 @@
 # ECO-TI - Relatório da Unidade VI
 
-Gerado em 16/10/2026 14:19 (America/Cuiaba). PDF verificado: 4 páginas.
+Gerado em 16/10/2026 14:31 (America/Cuiaba). PDF verificado: 4 páginas.
 
 ## 1. Projeto e identificação
 
@@ -43,6 +43,18 @@ Data: 16/10/2026. Escopo: atividade didática, somente front-end, dados fictíci
 | 5 | Expor credenciais/dados reais, ampliar permissões ou apagar conteúdo fora do protótipo | Interromper; pedir autorização específica quando aplicável | Essas ações excedem o front-end didático e podem ser irreversíveis ou ampliar acesso | Não foram executadas; segredos ficam fora do Git. Na restauração local há confirmação e opção prévia de exportar JSON |
 
 A autorização de escopo não comprova autenticação, publicação ou aprovação de cada valor sugerido pela IA. O estado efetivamente observado está registrado em `manifesto.json` e `PUBLICACAO.md`.
+
+## Risco e revisão dos mesmos cinco cenários
+
+Os níveis abaixo são qualitativos e consideram o escopo fictício deste protótipo. A revisão indicada é um controle exigido para a ação; sua realização efetiva deve ser comprovada pelos registros, sem confundir testes automatizados com aprovação humana.
+
+| Cenário | Risco e motivo | Revisão exigida |
+| --- | --- | --- |
+| 1. Editar o front-end | Baixo: regressão visual ou funcional; alterações locais e reversíveis por Git. | Agente confere diff, responsividade e testes aplicáveis antes de versionar. Humano avalia a entrega e decide sobre uso além do protótipo. |
+| 2. Sugerir classificação e resolução | Moderado: classificação ou dica incorreta pode direcionar mal o atendimento. | Solicitante revisa os campos e confirma a criação; equipe de TI valida a triagem antes de agir. Os testes simulam esse fluxo, sem comprovar avaliação de uma equipe real. |
+| 3. Executar testes e capturas | Baixo no ambiente fictício: resultado falso positivo ou evidência incompleta. | Agente confere resultados, dados usados e arquivos gerados; professor/aluno pode reproduzir a suíte e examinar trace. |
+| 4. Publicar GitHub/Vercel | Moderado: publicar arquivos indevidos ou no destino errado. | Humano autoriza o destino e conclui a autenticação; agente verifica arquivos, remoto, conta, URL pública e testes. Autorização restrita ao ECO-TI informado. |
+| 5. Segredos, novos acessos ou exclusões fora do escopo | Alto: exposição de informação, ampliação de acesso ou perda irreversível. | Interromper antes da ação e obter autorização humana específica quando aplicável. Esses atos não foram executados na entrega. |
 
 ## 4. Limites e reversão
 

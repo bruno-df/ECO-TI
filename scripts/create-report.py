@@ -109,13 +109,13 @@ fig_table = Table([figures], colWidths=[252.5, 252.5])
 fig_table.setStyle(TableStyle([('VALIGN', (0, 0), (-1, -1), 'TOP'), ('LEFTPADDING', (0, 0), (-1, -1), 0), ('RIGHTPADDING', (0, 0), (-1, -1), 9)]))
 story += [fig_table, p('Os PNGs originais estão em entrega/prints/. Vídeo e trace estão em entrega/playwright/. Logs, JSONs e resumos ficam em entrega/resultados/. A emulação móvel foi feita em Chromium; não comprova testes em Safari/iOS ou aparelho físico.', 'small'), PageBreak(), p('3. Autonomia e aprovação humana', 'h2')]
 autonomy = [
-    ['1', 'Editar o front-end e a marca', 'Executar no escopo', 'Pedido explícito; mudanças locais, verificáveis e versionáveis.', 'Diff, testes e git revert.'],
-    ['2', 'Classificar e sugerir resolução', 'Sugerir e pedir revisão na interface', 'A simulação pode errar; solicitante confirma a abertura e a equipe valida.', 'Campos editáveis e histórico preservado.'],
-    ['3', 'Testes e capturas fictícias', 'Executar autonomamente', 'Evidências solicitadas, em contextos novos sem contas reais.', 'Logs, trace e suíte reproduzível.'],
-    ['4', 'Publicar no GitHub/Vercel', 'Executar após autenticação e validação', 'Destino público indicado pelo usuário. A autorização não abrange outras contas ou repositórios.', 'Verificar remoto/URL; sem force push; novo deploy ou revert.'],
-    ['5', 'Segredos, dados reais ou ações destrutivas fora do escopo', 'Interromper e obter autorização específica', 'Pode ampliar acesso ou causar perda irreversível; não faz parte da demonstração.', 'Não executado; segredos fora do Git e exportação antes de restaurar.']
+    ['1', 'Editar o front-end e a marca', 'Executar no escopo', 'Baixo: regressão visual/funcional. Pedido explícito, alterações reversíveis.', 'Agente revisa diff e testes; git revert.'],
+    ['2', 'Classificar e sugerir resolução', 'Sugerir e pedir revisão na interface', 'Moderado: classificação ou dica incorreta. A simulação pode errar.', 'Solicitante confirma; equipe valida; campos editáveis e histórico.'],
+    ['3', 'Testes e capturas fictícias', 'Executar autonomamente', 'Baixo: falso positivo ou evidência incompleta. Contextos sem contas reais.', 'Agente confere logs e arquivos; aluno/professor pode reproduzir.'],
+    ['4', 'Publicar no GitHub/Vercel', 'Executar após autenticação e validação', 'Moderado: arquivos ou destino indevidos. Autorização restrita ao ECO-TI.', 'Humano autoriza destino/login; agente verifica remoto/URL; revert/deploy anterior.'],
+    ['5', 'Segredos, dados reais ou ações destrutivas fora do escopo', 'Interromper e obter autorização específica', 'Alto: exposição, ampliação de acesso ou perda irreversível. Fora do escopo.', 'Revisão humana antes da ação. Não executado; exportar antes de restaurar.']
 ]
-story += [table(['#', 'Cenário', 'Decisão', 'Justificativa', 'Controle/reversão'], autonomy, [23, 103, 103, 155, 121]), Spacer(1, 15), p('O que o humano efetivamente aprovou', 'h3')]
+story += [table(['#', 'Cenário', 'Decisão', 'Risco/justificativa', 'Revisão/reversão'], autonomy, [23, 103, 103, 155, 121]), Spacer(1, 15), p('O que o humano efetivamente aprovou', 'h3')]
 for text in [
     'Construção do sistema de chamados somente front-end e responsivo, independente do SIGD.',
     'Visões de solicitante e equipe de TI, com troca de visão.',
