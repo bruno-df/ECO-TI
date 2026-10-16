@@ -65,6 +65,8 @@ commit = m['git']['commitAplicacao']
 git_state = 'Enviado ao repositório público' if m['git']['published'] else 'Commit local; envio ainda não comprovado'
 ci_state = m['ci']['status']
 vercel_state = m['vercel']['url'] if m['vercel']['status'] == 'verified' else 'Impedimento documentado: ' + m['vercel']['reason']
+published = m.get('publishedTests', {})
+published_summary = f"URL pública sem login: {published.get('playwrightPassed', 0)} Playwright aprovados; {published.get('filesMatchBuild', 0)} arquivos idênticos ao build. Deploy por Vercel Drop, sem atualização automática por Git."
 rows = [
     ['1', 'Vercel', vercel_state],
     ['2', 'GitHub e hash', git_state + '. URL e hash completo abaixo.'],
@@ -90,7 +92,8 @@ story = [
         ['Sintaxe e build', f"JavaScript aprovado; arquivos estáticos em dist/. Node {local['node']}, {local['platform']}."],
         ['Regras locais', f"{local['unit']['tests']} testes aprovados, sem falhas; log TAP preservado."],
         ['Interface', f"Playwright {pw['version']} / Chromium: {pw['passed']} aprovados, {pw['failed']} falhas, {pw['flaky']} instáveis. Desktop 1440 x 1000 e mobile 390 x 844."],
-        ['CI no GitHub', ci_state + ('. ' + m['ci']['url'] if m['ci'].get('url') else '. A configuração da workflow não comprova uma execução remota.')]
+        ['CI no GitHub', ci_state + ('. ' + m['ci']['url'] if m['ci'].get('url') else '. A configuração da workflow não comprova uma execução remota.')],
+        ['URL publicada', published_summary]
     ], [110, 395]), Spacer(1, 13),
     p('Os cenários verificam busca, filtros e quadro; criação manual, atribuição e persistência; conversa assistida, revisão de prioridade e dicas; relato vago e migração ao formulário; visão do solicitante e menu móvel.'),
     p('A primeira execução E2E teve quatro falhas nos seletores dos testes. Após usar o papel acessível combobox, os dez testes passaram. Os testes simulam a revisão do solicitante; não representam cliques de aprovação feitos pelo humano.', 'small'),
@@ -118,7 +121,7 @@ for text in [
     'Visões de solicitante e equipe de TI, com troca de visão.',
     'Demonstração de assistente, classificação sugerida e dica de resolução, sem exigir integração completa com IA.',
     'Novo nome ECO-TI, repositório público bruno-df/ECO-TI e as seis entregas da atividade.',
-    'Intenção de concluir a autenticação do Git e o login da Vercel. Intenção não é comprovação de login ou publicação.'
+    'Logins concluídos pelo usuário; envio ao GitHub, CI e produção Vercel verificados pelo agente. Publicação limitada ao projeto ECO-TI na conta bruno-df.'
 ]: story.append(p('- ' + escape(text)))
 story += [p('Aprovação de escopo não equivale a aprovação humana de cada valor gerado nos testes. Os commits do agente usam identidade técnica fictícia do projeto, sem simular autoria humana.', 'small'), PageBreak(), p('4. Limites, publicação e reversão', 'h2'), p('Limites da aplicação', 'h3')]
 for text in [
@@ -127,7 +130,7 @@ for text in [
     'A IA é simulada por regras locais. Dificuldade e prioridade são estimativas; dicas não são diagnóstico nem executam alterações em equipamentos.',
     'Anexos guardam somente nome e tamanho. Não são enviados a uma equipe ou serviço externo.'
 ]: story.append(p('- ' + escape(text)))
-story += [p('Estado de publicação observado', 'h3'), p('<b>GitHub:</b> ' + escape(git_state) + '. ' + escape(m['git'].get('reason', ''))), p('<b>Vercel:</b> ' + escape(vercel_state)), p('<b>CI:</b> ' + escape(ci_state) + ('. ' + escape(m['ci']['url']) if m['ci'].get('url') else '')), p('Como reverter', 'h3')]
+story += [p('Estado de publicação observado', 'h3'), p('<b>GitHub:</b> ' + escape(git_state) + '. ' + escape(m['git'].get('reason', ''))), p('<b>Vercel:</b> ' + escape(vercel_state) + '. ' + escape(published_summary)), p('<b>CI:</b> ' + escape(ci_state) + ('. ' + escape(m['ci']['url']) if m['ci'].get('url') else '')), p('Como reverter', 'h3')]
 for text in [
     'Código público: criar um novo commit com git revert HASH_DA_ALTERACAO e enviar ao remoto; não substituir o histórico com force push.',
     'Vercel: republicar uma versão anterior verificada ou publicar o commit de reversão; confirmar a URL depois.',
@@ -153,7 +156,7 @@ text = '\n'.join(page.extract_text() or '' for page in reader.pages)
 for required in ['ECO-TI', commit, 'Autonomia', 'reverter', 'Codex']:
     if required.lower() not in text.lower(): raise RuntimeError(f'Texto ausente no PDF: {required}')
 m['report'] = { 'path': 'entrega/RELATORIO-ECO-TI.pdf', 'pages': len(reader.pages), 'generatedAt': stamp }
-(OUT / 'manifesto.json').write_text(json.dumps(m, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+(OUT / 'manifesto.json').write_text(json.dumps(m, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
 md = f'''# ECO-TI - Relatório da Unidade VI
 
 Gerado em {stamp}. PDF verificado: {len(reader.pages)} páginas.
@@ -170,6 +173,8 @@ Estado GitHub: {git_state}. {m['git'].get('reason', '')}
 
 Estado Vercel: {vercel_state}
 
+{published_summary} Fonte do build enviado: `{m['vercel'].get('sourceCommit', commit)}`. Hashes e comparação byte a byte em `entrega/resultados/publicacao-verificada.json`.
+
 Estado CI: {ci_state}. {m['ci'].get('url') or 'Nenhuma execução remota comprovada nesta captura.'}
 
 ## 2. Execução e resultados
@@ -182,7 +187,7 @@ Dois prints em `entrega/prints/`; vídeo e trace em `entrega/playwright/`; logs 
 
 ## 3. Aprovações e autonomia
 
-O humano aprovou o front-end responsivo, as duas visões, a demonstração assistida, o novo nome ECO-TI e as seis entregas no repositório público informado. Informou que concluiria os logins do Git e Vercel; isso não comprova publicação. O agente não atribuiu a si aprovação humana dos valores usados em testes.
+O humano aprovou o front-end responsivo, as duas visões, a demonstração assistida, o novo nome ECO-TI e as seis entregas no repositório público informado. Concluiu os logins do Git e Vercel. O agente verificou o envio público e a CI, confirmou a conta bruno-df, publicou o build e testou a URL real. O agente não atribuiu a si aprovação humana dos valores usados em testes.
 
 ''' + (OUT / 'MATRIZ-AUTONOMIA.md').read_text(encoding='utf-8') + '''
 ## 4. Limites e reversão
@@ -195,5 +200,5 @@ Reproduzir: `npm ci`, `npx playwright install chromium`, `npm run check`, `npm t
 
 Fontes: https://playwright.dev/docs/ci-intro e https://vercel.com/docs/git/vercel-for-github.
 '''
-(OUT / 'RELATORIO-ECO-TI.md').write_text(md, encoding='utf-8')
+(OUT / 'RELATORIO-ECO-TI.md').write_text(md, encoding='utf-8', newline='\n')
 print(f'Relatório gerado e validado estruturalmente: {len(reader.pages)} páginas. Revisão visual ainda necessária.')

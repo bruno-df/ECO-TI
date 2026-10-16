@@ -1,0 +1,628 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\brunofonteles\\gov360\\node_modules\\@playwright\\test\\cli.js",
+      "test"
+    ],
+    "configFile": "C:\\Users\\brunofonteles\\gov360\\playwright.config.js",
+    "rootDir": "C:/Users/brunofonteles/gov360/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 180000,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/brunofonteles/gov360/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "C:/Users/brunofonteles/gov360/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/brunofonteles/gov360/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "C:/Users/brunofonteles/gov360/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\brunofonteles\\gov360\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "C:\\Users\\brunofonteles\\gov360\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\brunofonteles\\gov360\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "https://eco-ti-dusky.vercel.app/",
+          "locale": "pt-BR",
+          "timezoneId": "America/Cuiaba",
+          "trace": "on",
+          "video": "on",
+          "screenshot": "only-on-failure",
+          "reducedMotion": "reduce",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\brunofonteles\\gov360\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile",
+        "testDir": "C:\\Users\\brunofonteles\\gov360\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\brunofonteles\\gov360\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "https://eco-ti-dusky.vercel.app/",
+          "locale": "pt-BR",
+          "timezoneId": "America/Cuiaba",
+          "trace": "on",
+          "video": "on",
+          "screenshot": "only-on-failure",
+          "reducedMotion": "reduce",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "isMobile": true,
+          "hasTouch": true
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "entrega/resultados/playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "eco-ti.spec.js",
+      "file": "eco-ti.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "marca, busca, filtros, quadro e layout sem transbordamento",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2109,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T18:18:30.554Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-marca-busca-filtros-0b342--layout-sem-transbordamento-desktop\\video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-marca-busca-filtros-0b342--layout-sem-transbordamento-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82e543c50ca0400bfaf8-90dd9a2c9e48baaa787f",
+          "file": "eco-ti.spec.js",
+          "line": 17,
+          "column": 1
+        },
+        {
+          "title": "formulário manual, atribuição, comentário e persistência",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1595,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T18:18:32.802Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-formulário-manual-a-fe1ad-o-comentário-e-persistência-desktop\\video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-formulário-manual-a-fe1ad-o-comentário-e-persistência-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82e543c50ca0400bfaf8-980ebb081cdea5d56ea8",
+          "file": "eco-ti.spec.js",
+          "line": 40,
+          "column": 1
+        },
+        {
+          "title": "assistente organiza o relato, permite revisão e salva dicas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1713,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T18:18:34.447Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-assistente-organiza-422da-rmite-revisão-e-salva-dicas-desktop\\video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-assistente-organiza-422da-rmite-revisão-e-salva-dicas-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82e543c50ca0400bfaf8-62b02c9d7987b5537a4d",
+          "file": "eco-ti.spec.js",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "relato vago, correção e migração ao formulário preservam os dados",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 897,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T18:18:36.208Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-relato-vago-correçã-2105e-rmulário-preservam-os-dados-desktop\\video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-relato-vago-correçã-2105e-rmulário-preservam-os-dados-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82e543c50ca0400bfaf8-76842126597f17fb3318",
+          "file": "eco-ti.spec.js",
+          "line": 94,
+          "column": 1
+        },
+        {
+          "title": "visão do solicitante mostra apenas chamados próprios e oculta edição técnica",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 671,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T18:18:37.136Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-visão-do-solicitant-af062-ios-e-oculta-edição-técnica-desktop\\video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-visão-do-solicitant-af062-ios-e-oculta-edição-técnica-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82e543c50ca0400bfaf8-9aec72e3cb3d145990e2",
+          "file": "eco-ti.spec.js",
+          "line": 109,
+          "column": 1
+        },
+        {
+          "title": "marca, busca, filtros, quadro e layout sem transbordamento",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 702,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T18:18:38.193Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-marca-busca-filtros-0b342--layout-sem-transbordamento-mobile\\video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-marca-busca-filtros-0b342--layout-sem-transbordamento-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82e543c50ca0400bfaf8-515d79927e3d2397f295",
+          "file": "eco-ti.spec.js",
+          "line": 17,
+          "column": 1
+        },
+        {
+          "title": "formulário manual, atribuição, comentário e persistência",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1051,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T18:18:39.024Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-formulário-manual-a-fe1ad-o-comentário-e-persistência-mobile\\video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-formulário-manual-a-fe1ad-o-comentário-e-persistência-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82e543c50ca0400bfaf8-2176d0c0f989649cbfa2",
+          "file": "eco-ti.spec.js",
+          "line": 40,
+          "column": 1
+        },
+        {
+          "title": "assistente organiza o relato, permite revisão e salva dicas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1162,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T18:18:40.118Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-assistente-organiza-422da-rmite-revisão-e-salva-dicas-mobile\\video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-assistente-organiza-422da-rmite-revisão-e-salva-dicas-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82e543c50ca0400bfaf8-6e9b230c38952f78b042",
+          "file": "eco-ti.spec.js",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "relato vago, correção e migração ao formulário preservam os dados",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 750,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T18:18:41.329Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-relato-vago-correçã-2105e-rmulário-preservam-os-dados-mobile\\video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-relato-vago-correçã-2105e-rmulário-preservam-os-dados-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82e543c50ca0400bfaf8-baeefc381d2cd0f790e7",
+          "file": "eco-ti.spec.js",
+          "line": 94,
+          "column": 1
+        },
+        {
+          "title": "visão do solicitante mostra apenas chamados próprios e oculta edição técnica",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 679,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T18:18:42.115Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-visão-do-solicitant-af062-ios-e-oculta-edição-técnica-mobile\\video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\brunofonteles\\gov360\\test-results\\eco-ti-visão-do-solicitant-af062-ios-e-oculta-edição-técnica-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82e543c50ca0400bfaf8-78d40bcb057f866b4fd2",
+          "file": "eco-ti.spec.js",
+          "line": 109,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T18:18:30.219Z",
+    "duration": 12681.72,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

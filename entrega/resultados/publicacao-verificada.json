@@ -1,0 +1,65 @@
+{
+  "verifiedAt": "2026-10-16T18:18:43.000Z",
+  "baseURL": "https://eco-ti-dusky.vercel.app/",
+  "authenticated": false,
+  "sourceCommit": "f587d6d713705d16f202d2ef7027d64010ea0696",
+  "method": "Vercel Drop: envio do build estático, sem vínculo Git automático",
+  "files": [
+    {
+      "path": "favicon.svg",
+      "status": 200,
+      "sha256": "bc212fec2be1d0d7f42895149f03653541d57b126534b9e13e98604febde7108",
+      "matchesBuild": true
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "6300a93b5a2ba8fab4ef2b5cbd46ff4f167a3eec71f6d0009cc02f363659ca1f",
+      "matchesBuild": true
+    },
+    {
+      "path": "src/app.js",
+      "status": 200,
+      "sha256": "a5b99cf52d01420eb56b2c0ba1782f1fd65f51c53e91bdec17a284b630eb3587",
+      "matchesBuild": true
+    },
+    {
+      "path": "src/assistant-ui.js",
+      "status": 200,
+      "sha256": "3ce9906a3128a84649f4b37cd848b948f21a9fa5887eaa658f7c436c9cafe183",
+      "matchesBuild": true
+    },
+    {
+      "path": "src/assistant.js",
+      "status": 200,
+      "sha256": "41a4ea32334d7fc54fb765f9cd94eede512e4603d5a185c7c394cc58f34aadea",
+      "matchesBuild": true
+    },
+    {
+      "path": "src/domain.js",
+      "status": 200,
+      "sha256": "0b3ddbc5864707576f0b8ebf025ef3a6ac7f97754e076d00b489447498a86712",
+      "matchesBuild": true
+    },
+    {
+      "path": "src/icons.js",
+      "status": 200,
+      "sha256": "3e55478ef0c462302013ce685a29371c031f52cb836e0ee4cfc88a2b60c0b0b2",
+      "matchesBuild": true
+    },
+    {
+      "path": "src/styles.css",
+      "status": 200,
+      "sha256": "1a4d1fc84cec5e09389d9b29f15056b550f8be46a6de549cd6474a800cbdf771",
+      "matchesBuild": true
+    }
+  ],
+  "playwright": {
+    "passed": 10,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "durationMs": 12681.72
+  },
+  "note": "Chromium desktop e mobile, contextos novos, dados fictícios. Evidências locais anteriores preservadas."
+}

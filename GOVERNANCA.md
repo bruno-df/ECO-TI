@@ -8,7 +8,7 @@ Data: 16/10/2026. Agente: Codex. O enunciado menciona Claude, mas não houve exe
 2. Visões de solicitante e equipe de TI, com troca de visão.
 3. Demonstração de assistente de TI, classificação sugerida de dificuldade/prioridade e dicas, sem exigir IA integrada.
 4. Novo nome ECO-TI, repositório público https://github.com/bruno-df/ECO-TI e as seis entregas acadêmicas.
-5. O usuário informou que autenticaria o Git e poderia concluir o login da Vercel. Isso não comprova que login, push ou deploy foram concluídos.
+5. O usuário concluiu as autenticações do Git e da Vercel. O agente confirmou o envio público e a CI, verificou a sessão `bruno-df` e publicou o build estático no projeto `eco-ti`, na equipe `bruno-dfs-projects`, dentro do destino autorizado. A URL pública foi testada sem login; os registros estão no manifesto.
 
 ## Execução pelo agente
 
@@ -17,6 +17,7 @@ Data: 16/10/2026. Agente: Codex. O enunciado menciona Claude, mas não houve exe
 - Testes locais e de interface, CI, configuração Vercel e evidências com dados fictícios.
 - Consulta somente ao repositório público indicado; verificação de acesso sem pedir segredos no chat.
 - Matriz de autonomia, relatório e plano de reversão. Publicação efetiva e CI são registradas no manifesto.
+- Publicação por Vercel Drop, sem novas permissões GitHub ou plano pago; dez testes adicionais na URL pública e comparação dos oito arquivos com o build. A conexão Git disponível apontava para outra organização; esta publicação não tem deploy automático por push.
 
 Os commits locais usam identidade técnica fictícia do projeto; não representam autoria humana das alterações geradas pelo agente.
 

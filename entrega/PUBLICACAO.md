@@ -29,13 +29,17 @@ O comando de envio pressupõe que `main` remota está vazia ou é ancestral da v
 
 ## Vercel
 
-1. Concluir o login em https://vercel.com/login.
-2. Em https://vercel.com/new, importar `bruno-df/ECO-TI` depois do envio do código.
-3. Usar nome `eco-ti`, framework **Other**, build `npm run build` e diretório de saída `dist`.
-4. Nenhuma variável de ambiente ou chave de IA é necessária.
-5. Publicar, abrir a URL retornada e verificar título ECO-TI, criação manual, assistente e recarga. Só então registrar a URL real como funcional.
+**URL pública verificada:** https://eco-ti-dusky.vercel.app/.
 
-Não se deve inventar um endereço `vercel.app` nem marcar a entrega como publicada apenas porque existe `vercel.json`.
+Projeto `eco-ti`, equipe `bruno-dfs-projects`, ambiente Production, status **Ready**. Deployment `4vSVdqQUDZwZuakfBTxAjnM6GyZr`; URL individual retornada: https://eco-rbxc93xjg-bruno-dfs-projects.vercel.app. Painel: https://vercel.com/bruno-dfs-projects/eco-ti.
+
+O usuário informou que concluiu o login; a sessão `bruno-df` foi confirmada no navegador. A conexão Git disponível apontava para outra organização. Para publicar o projeto solicitado, foi usado **Vercel Drop**, enviando somente os oito arquivos de `dist/` (163,8 KB), gerados da versão `f587d6d713705d16f202d2ef7027d64010ea0696`. Nenhum outro repositório foi copiado, plano pago contratado ou permissão de GitHub ampliada.
+
+Em 16/10/2026 às 14:18 (America/Cuiaba), a URL pública respondeu sem autenticação. Os oito arquivos foram comparados byte a byte com o build local: todos idênticos, HTTP 200. Os dez testes Playwright passaram na URL real, em desktop e mobile, sem falhas ou instabilidades. Os resultados, prints, vídeo e trace da publicação estão separados das evidências locais anteriores.
+
+**Atualizações não são automáticas pelo GitHub nesta publicação.** Para atualizar, executar `npm run build` e enviar a pasta `dist/` no painel do projeto existente, conferindo o destino e a URL depois. A configuração `vercel.json` permanece disponível para uma futura importação Git autorizada: framework Other, build `npm run build`, saída `dist`. O upload de `dist/` não inclui os cabeçalhos personalizados desse arquivo. Nenhuma variável de ambiente ou chave de IA é necessária.
+
+Para repetir a verificação publicada, definir `ECO_BASE_URL` e executar `node scripts/verify-published.mjs`. No Windows com certificados corporativos, usar `node --use-system-ca scripts/verify-published.mjs`; a validação TLS permanece ativa. O script compara os arquivos e roda a suíte, preservando as evidências locais.
 
 ## CI e evidências
 

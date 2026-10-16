@@ -1,6 +1,6 @@
 # ECO-TI - Relatório da Unidade VI
 
-Gerado em 16/10/2026 13:57 (America/Cuiaba). PDF verificado: 4 páginas.
+Gerado em 16/10/2026 14:19 (America/Cuiaba). PDF verificado: 4 páginas.
 
 ## 1. Projeto e identificação
 
@@ -12,7 +12,9 @@ Hash da aplicação e testes: `2e6a042aa8cb8bbb31663bddab21d61c4b04d1aa`. Um com
 
 Estado GitHub: Enviado ao repositório público. Envio à branch main concluído e hash confirmado pela API pública do GitHub.
 
-Estado Vercel: Impedimento documentado: Login da Vercel ainda não comprovado; página de autenticação aberta para o usuário.
+Estado Vercel: https://eco-ti-dusky.vercel.app/
+
+URL pública sem login: 10 Playwright aprovados; 8 arquivos idênticos ao build. Deploy por Vercel Drop, sem atualização automática por Git. Fonte do build enviado: `f587d6d713705d16f202d2ef7027d64010ea0696`. Hashes e comparação byte a byte em `entrega/resultados/publicacao-verificada.json`.
 
 Estado CI: Concluída com sucesso no GitHub Actions. https://github.com/bruno-df/ECO-TI/actions/runs/38943481645
 
@@ -26,7 +28,7 @@ Dois prints em `entrega/prints/`; vídeo e trace em `entrega/playwright/`; logs 
 
 ## 3. Aprovações e autonomia
 
-O humano aprovou o front-end responsivo, as duas visões, a demonstração assistida, o novo nome ECO-TI e as seis entregas no repositório público informado. Informou que concluiria os logins do Git e Vercel; isso não comprova publicação. O agente não atribuiu a si aprovação humana dos valores usados em testes.
+O humano aprovou o front-end responsivo, as duas visões, a demonstração assistida, o novo nome ECO-TI e as seis entregas no repositório público informado. Concluiu os logins do Git e Vercel. O agente verificou o envio público e a CI, confirmou a conta bruno-df, publicou o build e testou a URL real. O agente não atribuiu a si aprovação humana dos valores usados em testes.
 
 # ECO-TI - Matriz de autonomia
 

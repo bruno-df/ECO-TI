@@ -13,9 +13,19 @@
     "reason": "Envio à branch main concluído e hash confirmado pela API pública do GitHub."
   },
   "vercel": {
-    "status": "awaiting_login",
-    "url": null,
-    "reason": "Login da Vercel ainda não comprovado; página de autenticação aberta para o usuário.",
+    "status": "verified",
+    "url": "https://eco-ti-dusky.vercel.app/",
+    "reason": "Produção Ready na conta bruno-df; acesso público sem login, oito arquivos idênticos ao build e dez testes Playwright aprovados.",
+    "project": "eco-ti",
+    "team": "bruno-dfs-projects",
+    "environment": "production",
+    "deploymentId": "4vSVdqQUDZwZuakfBTxAjnM6GyZr",
+    "deploymentUrl": "https://eco-rbxc93xjg-bruno-dfs-projects.vercel.app",
+    "dashboardUrl": "https://vercel.com/bruno-dfs-projects/eco-ti",
+    "sourceCommit": "f587d6d713705d16f202d2ef7027d64010ea0696",
+    "method": "Vercel Drop: envio de dist/; sem vínculo Git automático",
+    "verifiedAt": "2026-10-16T18:18:43.000Z",
+    "verification": "entrega/resultados/publicacao-verificada.json",
     "buildCommand": "npm run build",
     "outputDirectory": "dist"
   },
@@ -39,10 +49,25 @@
     "trace": "entrega/playwright/assistente-desktop.trace.zip",
     "autonomyMatrix": "entrega/MATRIZ-AUTONOMIA.md"
   },
+  "publishedTests": {
+    "playwrightPassed": 10,
+    "failed": 0,
+    "flaky": 0,
+    "authenticated": false,
+    "filesMatchBuild": 8,
+    "report": "entrega/resultados/playwright-publicado.json",
+    "video": "entrega/playwright/assistente-publicado.webm",
+    "trace": "entrega/playwright/assistente-publicado.trace.zip",
+    "screenshots": [
+      "entrega/prints/03-central-publicada.png",
+      "entrega/prints/04-assistente-publicado.png",
+      "entrega/prints/05-vercel-ready.png"
+    ]
+  },
   "agent": "Codex; o enunciado menciona Claude, mas não houve execução do Claude nesta sessão",
   "report": {
     "path": "entrega/RELATORIO-ECO-TI.pdf",
     "pages": 4,
-    "generatedAt": "16/10/2026 13:57 (America/Cuiaba)"
+    "generatedAt": "16/10/2026 14:19 (America/Cuiaba)"
   }
 }

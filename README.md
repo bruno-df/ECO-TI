@@ -2,6 +2,8 @@
 
 Projeto acadêmico somente front-end, responsivo, independente do SIGD e sem vínculo ou autorização da SEMA. Nome anterior: GOVSAFE 360. Repositório público indicado pelo usuário: https://github.com/bruno-df/ECO-TI.
 
+**Demonstração publicada:** https://eco-ti-dusky.vercel.app/. Produção Ready, sem login; dez testes Playwright aprovados na URL real. O deploy foi feito por envio do build estático; novos pushes ao GitHub não atualizam automaticamente esta publicação.
+
 ## Entrega da Unidade VI
 
 O índice das seis entregas está em [EVIDENCIAS.md](EVIDENCIAS.md). A pasta [entrega/](entrega/) reúne manifesto com URLs/hash/estado remoto, relatório PDF de até cinco páginas, matriz de autonomia com cinco cenários, dois prints ECO-TI, resultados locais, vídeo e trace Playwright.
@@ -27,7 +29,7 @@ São 28 testes das regras e cinco cenários de interface em dois projetos Chromi
 
 O Playwright gera HTML, JSON, vídeo e trace. Use `npm run test:e2e:report` ou `npx playwright show-trace entrega/playwright/assistente-desktop.trace.zip`. `node scripts/collect-evidence.mjs` coleta amostras da última execução aprovada; `node scripts/verify.mjs` registra verificações locais e build.
 
-Para testar uma URL publicada, defina `ECO_BASE_URL` com a URL real antes de `npm run test:e2e`. Use somente ambientes de demonstração sem dados institucionais.
+Para testar uma URL publicada, defina `ECO_BASE_URL` com a URL real antes de `npm run test:e2e`. `node scripts/verify-published.mjs` compara os oito arquivos com `dist/`, executa os dez testes e preserva os resultados locais anteriores. No Windows com certificados corporativos, use `node --use-system-ca scripts/verify-published.mjs`. Use somente ambientes de demonstração sem dados institucionais.
 
 ## Funcionalidades e limites
 
