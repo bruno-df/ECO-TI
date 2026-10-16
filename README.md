@@ -1,6 +1,6 @@
 # ECO-TI - Central de serviços de TI
 
-Projeto acadêmico somente front-end, responsivo, independente do SIGD e sem vínculo ou autorização da SEMA. Nome anterior: GOVSAFE 360. Repositório público indicado pelo usuário: https://github.com/bruno-df/ECO-TI.
+Projeto acadêmico somente front-end, responsivo e sem vínculo ou autorização da SEMA. Nome anterior: GOVSAFE 360. Repositório público indicado pelo usuário: https://github.com/bruno-df/ECO-TI.
 
 **Demonstração publicada:** https://eco-ti-dusky.vercel.app/. Produção Ready, sem login; dez testes Playwright aprovados na URL real. O deploy foi feito por envio do build estático; novos pushes ao GitHub não atualizam automaticamente esta publicação.
 
