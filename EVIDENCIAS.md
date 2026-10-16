@@ -2,7 +2,7 @@
 
 Data: 16/10/2026, America/Cuiaba. Somente front-end; dados fictícios.
 
-Para avaliar pelos cinco critérios de dois pontos, consulte a [conferência pela rubrica](entrega/RUBRICA.md), com links diretos às evidências e aos marcos do processo.
+Consulte os cinco critérios e suas evidências na [conferência pela rubrica](entrega/RUBRICA.md), com links diretos aos arquivos e aos marcos do processo.
 
 | Exigência | Evidência verificável |
 | --- | --- |

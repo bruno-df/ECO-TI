@@ -1,14 +1,14 @@
 # ECO-TI - Conferência pela rubrica
 
-Data: 16/10/2026. Este índice relaciona as evidências aos cinco critérios informados pelo aluno. A pontuação cabe ao professor; a conferência não atribui nota.
+Data: 16/10/2026. Este índice apresenta os cinco critérios informados pelo aluno e as evidências correspondentes.
 
-| Critério | Pontos previstos | Evidências para avaliação |
-| --- | ---: | --- |
-| Git e GitHub: histórico/evidência | 2 | [Repositório público](https://github.com/bruno-df/ECO-TI), [histórico de commits](https://github.com/bruno-df/ECO-TI/commits/main/), hashes no [manifesto](manifesto.json) e marcos abaixo. |
-| Sistema publicado, ou impedimento bem documentado | 2 | [ECO-TI publicado](https://eco-ti-dusky.vercel.app/), [verificação pública](resultados/publicacao-verificada.json), [status Ready](prints/05-vercel-ready.png) e [registro de publicação e reversão](PUBLICACAO.md). |
-| Testes e relatório verificável | 2 | [28 testes unitários](resultados/unitarios.tap), [resumo local](resultados/locais-resumo.json), [10 Playwright locais](resultados/playwright-resumo.json), [10 na URL pública](resultados/playwright-publicado.json), [CI aprovada da aplicação](https://github.com/bruno-df/ECO-TI/actions/runs/38943481645) e [relatório de quatro páginas](RELATORIO-ECO-TI.pdf). |
-| Governança: 5 cenários, risco e revisão | 2 | [Matriz com cinco cenários](MATRIZ-AUTONOMIA.md): decisão justificada, risco qualitativo, revisão exigida e reversão; [aprovações efetivas e limites](../GOVERNANCA.md). |
-| Rastreabilidade e comunicação do processo | 2 | Marcos abaixo, [índice das seis entregas](../EVIDENCIAS.md), [manifesto com URLs e hashes](manifesto.json), [governança](../GOVERNANCA.md) e [histórico das dificuldades de publicação](PUBLICACAO.md). |
+| Critério | Evidências |
+| --- | --- |
+| Git e GitHub: histórico/evidência | [Repositório público](https://github.com/bruno-df/ECO-TI), [histórico de commits](https://github.com/bruno-df/ECO-TI/commits/main/), hashes no [manifesto](manifesto.json) e marcos abaixo. |
+| Sistema publicado, ou impedimento bem documentado | [ECO-TI publicado](https://eco-ti-dusky.vercel.app/), [verificação pública](resultados/publicacao-verificada.json), [status Ready](prints/05-vercel-ready.png) e [registro de publicação e reversão](PUBLICACAO.md). |
+| Testes e relatório verificável | [28 testes unitários](resultados/unitarios.tap), [resumo local](resultados/locais-resumo.json), [10 Playwright locais](resultados/playwright-resumo.json), [10 na URL pública](resultados/playwright-publicado.json), [CI aprovada da aplicação](https://github.com/bruno-df/ECO-TI/actions/runs/38943481645) e [relatório de quatro páginas](RELATORIO-ECO-TI.pdf). |
+| Governança: 5 cenários, risco e revisão | [Matriz com cinco cenários](MATRIZ-AUTONOMIA.md): decisão justificada, risco qualitativo, revisão exigida e reversão; [aprovações efetivas e limites](../GOVERNANCA.md). |
+| Rastreabilidade e comunicação do processo | Marcos abaixo, [índice das seis entregas](../EVIDENCIAS.md), [manifesto com URLs e hashes](manifesto.json), [governança](../GOVERNANCA.md) e [histórico das dificuldades de publicação](PUBLICACAO.md). |
 
 ## Marcos verificáveis do processo
 
