@@ -1,6 +1,7 @@
 export const CURRENT_USER = 'Bruno Fonteles';
 export const STATUSES = ['Aberto', 'Em atendimento', 'Aguardando', 'Resolvido'];
 export const PRIORITIES = ['Baixa', 'Média', 'Alta', 'Urgente'];
+export const DIFFICULTIES = ['Baixa', 'Média', 'Alta', 'A avaliar'];
 export const CATEGORIES = ['Hardware', 'Software', 'Rede e internet', 'Acessos', 'Impressoras', 'Outros'];
 export const TEAMS = [
   { name: 'Suporte técnico', description: 'Equipamentos e suporte ao usuário', icon: 'monitor', members: ['Ana Costa', 'Pedro Santos'], color: 'green' },
@@ -53,19 +54,23 @@ export function createTicket(input, tickets, now = new Date()) {
   if (description.length < 15 || description.length > 4000) throw new Error('A descrição deve ter entre 15 e 4.000 caracteres.');
   if (!department || department.length > 100) throw new Error('Informe um setor com até 100 caracteres.');
   if (!CATEGORIES.includes(input.category) || !PRIORITIES.includes(input.priority) || !TEAMS.some(team => team.name === input.team)) throw new Error('Selecione uma categoria, prioridade e equipe válidas.');
+  if (input.difficulty && !DIFFICULTIES.includes(input.difficulty)) throw new Error('Selecione uma dificuldade válida.');
+  if (input.aiAnalysis && !isAssistantAnalysis(input.aiAnalysis)) throw new Error('A análise demonstrativa está incompleta. Reabra o assistente.');
   const date = now.toISOString();
-  return { id: Math.max(1000, ...tickets.map(ticket => ticket.id)) + 1, title, description, department, category: input.category, priority: input.priority, team: input.team, status: 'Aberto', assignee: '', requester: CURRENT_USER, email: 'bruno@exemplo.invalid', createdAt: date, updatedAt: date, attachments: input.attachments || [], comments: [], history: [{ text: 'Chamado criado', actor: CURRENT_USER, date }] };
+  return { id: Math.max(1000, ...tickets.map(ticket => ticket.id)) + 1, title, description, department, category: input.category, priority: input.priority, difficulty: input.difficulty || 'A avaliar', team: input.team, status: 'Aberto', assignee: '', requester: CURRENT_USER, email: 'bruno@exemplo.invalid', createdAt: date, updatedAt: date, attachments: input.attachments || [], comments: [], history: [{ text: 'Chamado criado', actor: CURRENT_USER, date }, ...(input.aiAnalysis ? [{ text: 'Classificação sugerida pelo assistente demonstrativo e revisada pelo solicitante', actor: CURRENT_USER, date }] : [])], ...(input.aiAnalysis ? { aiAnalysis: input.aiAnalysis } : {}) };
 }
 export function updateTicket(ticket, updates, actor = CURRENT_USER, now = new Date()) {
   const date = now.toISOString();
   const changes = [];
   if (!STATUSES.includes(updates.status)) throw new Error('Status inválido.');
   if (!PRIORITIES.includes(updates.priority)) throw new Error('Prioridade inválida.');
+  if (updates.difficulty !== undefined && !DIFFICULTIES.includes(updates.difficulty)) throw new Error('Dificuldade inválida.');
   const team = TEAMS.find(team => team.name === updates.team);
   if (!team || updates.assignee && !team.members.includes(updates.assignee)) throw new Error('Responsável incompatível com a equipe.');
-  for (const key of ['status', 'priority', 'team', 'assignee']) {
+  for (const key of ['status', 'priority', 'team', 'assignee', 'difficulty']) {
+    if (key === 'difficulty' && updates[key] === undefined) continue;
     if (updates[key] === ticket[key]) continue;
-    const text = key === 'status' ? `Status alterado para ${updates[key].toLowerCase()}` : key === 'priority' ? `Prioridade alterada para ${updates[key].toLowerCase()}` : key === 'team' ? `Encaminhado para ${updates[key]}` : updates[key] ? `Atribuído a ${updates[key]}` : 'Responsável removido';
+    const text = key === 'status' ? `Status alterado para ${updates[key].toLowerCase()}` : key === 'priority' ? `Prioridade alterada para ${updates[key].toLowerCase()}` : key === 'difficulty' ? `Dificuldade alterada para ${updates[key].toLowerCase()}` : key === 'team' ? `Encaminhado para ${updates[key]}` : updates[key] ? `Atribuído a ${updates[key]}` : 'Responsável removido';
     changes.push({ text, actor, date });
   }
   return changes.length ? { ...ticket, ...updates, updatedAt: date, history: [...ticket.history, ...changes] } : ticket;
@@ -80,5 +85,8 @@ export function metrics(tickets) {
   return { total: tickets.length, open: tickets.filter(t => t.status === 'Aberto').length, progress: tickets.filter(t => t.status === 'Em atendimento').length, waiting: tickets.filter(t => t.status === 'Aguardando').length, resolved: tickets.filter(t => t.status === 'Resolvido').length };
 }
 export function isTicketData(value) {
-  return Array.isArray(value) && value.length <= 5000 && value.every(t => t && Number.isSafeInteger(t.id) && t.id > 0 && typeof t.title === 'string' && t.title.length <= 120 && typeof t.description === 'string' && typeof t.requester === 'string' && typeof t.department === 'string' && typeof t.email === 'string' && typeof t.assignee === 'string' && CATEGORIES.includes(t.category) && STATUSES.includes(t.status) && PRIORITIES.includes(t.priority) && TEAMS.some(team => team.name === t.team) && Number.isFinite(Date.parse(t.createdAt)) && Number.isFinite(Date.parse(t.updatedAt)) && Array.isArray(t.attachments) && t.attachments.every(a => a && typeof a.name === 'string' && Number.isFinite(a.size)) && Array.isArray(t.comments) && t.comments.every(c => c && typeof c.body === 'string' && typeof c.author === 'string' && Number.isFinite(Date.parse(c.date))) && Array.isArray(t.history) && t.history.every(h => h && typeof h.text === 'string' && typeof h.actor === 'string' && Number.isFinite(Date.parse(h.date))));
+  return Array.isArray(value) && value.length <= 5000 && value.every(t => t && Number.isSafeInteger(t.id) && t.id > 0 && typeof t.title === 'string' && t.title.length <= 120 && typeof t.description === 'string' && typeof t.requester === 'string' && typeof t.department === 'string' && typeof t.email === 'string' && typeof t.assignee === 'string' && CATEGORIES.includes(t.category) && STATUSES.includes(t.status) && PRIORITIES.includes(t.priority) && (t.difficulty === undefined || DIFFICULTIES.includes(t.difficulty)) && (t.aiAnalysis === undefined || isAssistantAnalysis(t.aiAnalysis)) && TEAMS.some(team => team.name === t.team) && Number.isFinite(Date.parse(t.createdAt)) && Number.isFinite(Date.parse(t.updatedAt)) && Array.isArray(t.attachments) && t.attachments.every(a => a && typeof a.name === 'string' && Number.isFinite(a.size)) && Array.isArray(t.comments) && t.comments.every(c => c && typeof c.body === 'string' && typeof c.author === 'string' && Number.isFinite(Date.parse(c.date))) && Array.isArray(t.history) && t.history.every(h => h && typeof h.text === 'string' && typeof h.actor === 'string' && Number.isFinite(Date.parse(h.date))));
+}
+export function isAssistantAnalysis(value) {
+  return Boolean(value && value.mode === 'simulated' && value.reviewed === true && CATEGORIES.includes(value.category) && PRIORITIES.includes(value.priority) && DIFFICULTIES.includes(value.difficulty) && TEAMS.some(team => team.name === value.team) && ['categoryReason', 'priorityReason', 'difficultyReason', 'originalProblem'].every(key => typeof value[key] === 'string' && value[key].length <= 1000) && Array.isArray(value.tipSteps) && value.tipSteps.length > 0 && value.tipSteps.length <= 5 && value.tipSteps.every(step => typeof step === 'string' && step.length <= 500));
 }

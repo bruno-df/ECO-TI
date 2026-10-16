@@ -1,5 +1,6 @@
 import { icon } from './icons.js';
-import { CURRENT_USER, STATUSES, PRIORITIES, CATEGORIES, TEAMS, initials, normalize, seedTickets, filterTickets, createTicket, updateTicket, addComment, metrics, isTicketData } from './domain.js';
+import { CURRENT_USER, STATUSES, PRIORITIES, DIFFICULTIES, CATEGORIES, TEAMS, initials, normalize, seedTickets, filterTickets, createTicket, updateTicket, addComment, metrics, isTicketData } from './domain.js';
+import { createAssistantController } from './assistant-ui.js';
 
 const STORAGE_KEY = 'govsafe360.tickets.v1';
 let storageWarning = '';
@@ -27,6 +28,7 @@ const priority = value => `<span class="priority ${priorityClass(value)}"><span 
 const avatar = (name, small = false) => `<span class="avatar ${small ? 'avatar-sm' : ''} avatar-${(name.charCodeAt(0) || 0) % 5}" title="${esc(name)}">${esc(initials(name))}</span>`;
 const options = (values, selected, blank = '') => `${blank ? `<option value="">${esc(blank)}</option>` : ''}${values.map(value => `<option value="${esc(value)}" ${selected === value ? 'selected' : ''}>${esc(value)}</option>`).join('')}`;
 const visibleTickets = () => state.role === 'requester' ? tickets.filter(t => t.requester === CURRENT_USER) : tickets;
+const assistant = createAssistantController({ dialog, icon, esc, options, onCreate: saveNewTicket, onManual: newTicketDialog });
 function persist() {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(tickets)); }
   catch { toast('Não foi possível salvar no navegador. Suas alterações estão disponíveis nesta sessão.', 'alert'); }
@@ -162,15 +164,33 @@ function openDialog(content, className = '') {
   dialog.showModal();
 }
 const dialogHeader = (eyebrow, title, subtitle = '') => `<div class="dialog-header"><div><span class="eyebrow">${esc(eyebrow)}</span><h2 id="dialog-title">${esc(title)}</h2>${subtitle ? `<p>${esc(subtitle)}</p>` : ''}</div><button class="icon-button" data-action="close-dialog" aria-label="Fechar janela">${icon('close')}</button></div>`;
-function newTicketDialog() {
+function ticketCreationChoice() {
+  openDialog(`${dialogHeader('DO SEU JEITO', 'Como você prefere abrir seu chamado?', 'Você não precisa saber o nome técnico do problema.')}<div class="dialog-content creation-options"><button class="creation-option creation-option-assisted" data-action="assistant"><span class="creation-option-icon">${icon('spark')}</span><span><span class="creation-option-label">Assistente de TI <small>SIMULAÇÃO DE IA</small></span><strong>Conte o problema em uma conversa</strong><span>Responda perguntas simples e receba sugestões de categoria, prioridade, dificuldade e equipe.</span><b>Começar conversa ${icon('arrow')}</b></span></button><button class="creation-option" data-action="manual-ticket"><span class="creation-option-icon">${icon('ticket')}</span><span><strong>Preencher formulário</strong><span>Já sabe o que precisa? Informe os dados e abra o chamado diretamente.</span><b>Abrir formulário ${icon('arrow')}</b></span></button><p class="creation-note">A classificação sugerida pode ser revisada por você e pela equipe de TI.</p></div>`, 'creation-choice-dialog');
+}
+function newTicketDialog(prefill = {}) {
   openDialog(`${dialogHeader('VAMOS RESOLVER JUNTOS', 'Novo chamado', 'Conte o que você precisa. Nossa equipe cuida do próximo passo.')}<form id="new-ticket-form"><div class="dialog-content form-grid"><label class="full-width">Assunto <span class="required">*</span><input name="title" placeholder="Resuma sua solicitação em uma frase" minlength="5" maxlength="120" required autofocus /></label><label>Categoria <span class="required">*</span><select name="category" required><option value="">Selecione uma categoria</option>${options(CATEGORIES)}</select></label><label>Prioridade <span class="required">*</span><select name="priority" required>${options(PRIORITIES, 'Média')}</select></label><label>Setor solicitante <span class="required">*</span><input name="department" placeholder="Ex.: Administrativo" maxlength="100" required /></label><label>Encaminhar para <span class="required">*</span><select name="team" required>${options(TEAMS.map(t => t.name), 'Suporte técnico')}</select></label><label class="full-width">Descrição <span class="required">*</span><textarea name="description" rows="4" minlength="15" maxlength="4000" placeholder="O que aconteceu? Quando começou? Quais tentativas você já fez?" required></textarea><span class="field-hint">Não inclua senhas ou informações pessoais sensíveis.</span></label><div class="full-width"><label class="file-drop" for="attachments">${icon('paperclip')}<strong>Adicionar referência de anexo</strong><span>Até 3 arquivos de 5 MB. Somente nome e tamanho serão guardados.</span><input id="attachments" name="attachments" type="file" multiple aria-describedby="attachment-list" /></label><p id="attachment-list" class="field-hint" aria-live="polite"></p></div><div class="form-info full-width">${icon('user')}Solicitação em nome de <strong>${CURRENT_USER}</strong></div><p id="form-error" class="form-error full-width" role="alert"></p></div><div class="dialog-footer"><span><span class="required">*</span> Campos obrigatórios</span><div><button type="button" class="button button-outline" data-action="close-dialog">Cancelar</button><button class="button button-primary" type="submit">${icon('plus')}Criar chamado</button></div></div></form>`);
+  for (const key of ['title', 'category', 'priority', 'department', 'team', 'description']) {
+    if (prefill[key]) dialog.querySelector('#new-ticket-form').elements[key].value = prefill[key];
+  }
+}
+function saveNewTicket(data) {
+  const ticket = createTicket(data, tickets);
+  tickets.unshift(ticket); persist(); dialog.close(); route('tickets');
+  toast(`Chamado #TI-${ticket.id} criado e encaminhado para ${ticket.team}.`);
+  detailDialog(ticket.id);
+}
+function assistantInsight(ticket) {
+  if (!ticket.aiAnalysis) return '';
+  const analysis = ticket.aiAnalysis;
+  return `<section class="ai-insight" aria-label="Sugestão de resolução do assistente"><div class="ai-insight-heading"><span>${icon('spark')}</span><div><h3>Dica inicial de resolução</h3><p>Assistente de TI · IA simulada</p></div><span class="ai-demo-pill">DEMONSTRAÇÃO</span></div><p>Confira estas orientações para ${esc((analysis.tipCategory || analysis.category).toLowerCase())}. A causa e a solução precisam ser validadas pela equipe.</p><ol>${analysis.tipSteps.map(step => `<li>${esc(step)}</li>`).join('')}</ol><details><summary>Como a classificação foi sugerida</summary><p><strong>Categoria inicial: ${esc(analysis.category)}.</strong> ${esc(analysis.categoryReason)}</p><p><strong>Prioridade inicial: ${esc(analysis.priority)}.</strong> ${esc(analysis.priorityReason)}</p><p><strong>Dificuldade inicial: ${esc(analysis.difficulty)}.</strong> ${esc(analysis.difficultyReason)}</p><p>O solicitante revisou o resumo antes de criar. A classificação atual pode incluir ajustes humanos.</p></details></section>`;
 }
 function detailDialog(id, activeTab = 'conversation') {
   const ticket = visibleTickets().find(t => t.id === id);
   if (!ticket) return;
   const team = TEAMS.find(t => t.name === ticket.team);
   openDialog(`${dialogHeader(`#TI-${ticket.id} · ${ticket.category}`, ticket.title)}<div class="detail-content"><div class="detail-status-row">${badge(ticket.status)}${priority(ticket.priority)}<span>${icon('clock')}Criado em ${fullDate(ticket.createdAt)}</span></div><div class="requester-card">${avatar(ticket.requester)}<div><strong>${esc(ticket.requester)}</strong><small>${esc(ticket.department)} · Solicitante</small></div></div><section class="description-section"><h3>Descrição da solicitação</h3><p>${esc(ticket.description)}</p>${ticket.attachments.length ? `<div class="attachments">${ticket.attachments.map(a => `<span>${icon('paperclip')}<span>${esc(a.name)}<small>${Math.round(a.size / 1024)} KB · referência local</small></span></span>`).join('')}</div>` : ''}</section>
-    ${state.role === 'agent' ? `<form id="ticket-update-form" data-id="${id}" class="assignment-form"><div class="section-title">${icon('users')}Organização e encaminhamento</div><div class="form-grid"><label>Status<select name="status">${options(STATUSES, ticket.status)}</select></label><label>Prioridade<select name="priority">${options(PRIORITIES, ticket.priority)}</select></label><label>Equipe<select name="team" id="detail-team">${options(TEAMS.map(t => t.name), ticket.team)}</select></label><label>Responsável<select name="assignee" id="detail-assignee">${options(team.members, ticket.assignee, 'Não atribuído')}</select></label></div><div class="assignment-footer"><span>Alterações registradas no histórico</span><button class="button button-primary button-small" type="submit">${icon('check')}Salvar alterações</button></div><p class="form-error" id="update-error" role="alert"></p></form>` : `<div class="requester-assignment"><span>${icon('users')}<strong>${esc(ticket.team)}</strong></span><span>Responsável: ${esc(ticket.assignee || 'Aguardando atribuição')}</span></div>`}
+    <div class="ticket-difficulty"><span>Dificuldade estimada</span><strong>${esc(ticket.difficulty || 'A avaliar')}</strong>${ticket.aiAnalysis ? '<small>Abertura com assistente demonstrativo</small>' : ''}</div>${assistantInsight(ticket)}
+    ${state.role === 'agent' ? `<form id="ticket-update-form" data-id="${id}" class="assignment-form"><div class="section-title">${icon('users')}Organização e encaminhamento</div><div class="form-grid"><label>Status<select name="status">${options(STATUSES, ticket.status)}</select></label><label>Prioridade<select name="priority">${options(PRIORITIES, ticket.priority)}</select></label><label>Equipe<select name="team" id="detail-team">${options(TEAMS.map(t => t.name), ticket.team)}</select></label><label>Responsável<select name="assignee" id="detail-assignee">${options(team.members, ticket.assignee, 'Não atribuído')}</select></label><label>Dificuldade estimada<select name="difficulty">${options(DIFFICULTIES, ticket.difficulty || 'A avaliar')}</select></label></div><div class="assignment-footer"><span>Alterações registradas no histórico</span><button class="button button-primary button-small" type="submit">${icon('check')}Salvar alterações</button></div><p class="form-error" id="update-error" role="alert"></p></form>` : `<div class="requester-assignment"><span>${icon('users')}<strong>${esc(ticket.team)}</strong></span><span>Responsável: ${esc(ticket.assignee || 'Aguardando atribuição')}</span></div>`}
     <div class="detail-tabs" role="group" aria-label="Informações do chamado"><button class="${activeTab === 'conversation' ? 'active' : ''}" data-detail-tab="conversation" data-id="${id}">Conversa<span>${ticket.comments.length}</span></button><button class="${activeTab === 'history' ? 'active' : ''}" data-detail-tab="history" data-id="${id}">Histórico<span>${ticket.history.length}</span></button></div>
     ${activeTab === 'history' ? `<div class="history-list">${[...ticket.history].reverse().map(h => `<div class="history-item"><span class="history-dot"></span><div><strong>${esc(h.text)}</strong><small>${esc(h.actor)} · ${fullDate(h.date)}</small></div></div>`).join('')}</div>` : `<div class="comments-list">${ticket.comments.length ? ticket.comments.map(c => `<div class="comment">${avatar(c.author, true)}<div><div class="comment-heading"><strong>${esc(c.author)}</strong><time>${fullDate(c.date)}</time></div><p>${esc(c.body)}</p></div></div>`).join('') : `<div class="conversation-empty">${icon('send')}<strong>O atendimento começa com uma conversa</strong><p>Adicione informações ou deixe uma mensagem para a equipe.</p></div>`}</div><form id="comment-form" data-id="${id}" class="comment-form"><label for="comment-body" class="sr-only">Mensagem para o chamado</label><textarea id="comment-body" name="body" rows="3" placeholder="Escreva uma mensagem..." maxlength="2000" required></textarea><div><span>Visível aos dois perfis da demonstração</span><button class="button button-primary button-small" type="submit">Enviar${icon('send')}</button></div><p class="form-error" id="comment-error" role="alert"></p></form>`}</div><div class="detail-bottom">${icon('shield')}Ambiente acadêmico · Dados salvos somente neste navegador</div>`, 'detail-dialog');
 }
@@ -218,7 +238,9 @@ document.addEventListener('click', event => {
     toast(`Visão alterada para ${state.role === 'agent' ? 'equipe de TI' : 'solicitante'}.`); return;
   }
   switch (target?.dataset.action) {
-    case 'new-ticket': newTicketDialog(); break;
+    case 'new-ticket': ticketCreationChoice(); break;
+    case 'manual-ticket': newTicketDialog(); break;
+    case 'assistant': assistant.open(); break;
     case 'close-dialog': dialog.close(); break;
     case 'profile': profileDialog(); break;
     case 'settings': settingsDialog(); break;
@@ -277,10 +299,7 @@ document.addEventListener('submit', event => {
     if (form.id === 'new-ticket-form') {
       const data = Object.fromEntries(new FormData(form));
       data.attachments = [...form.elements.attachments.files].map(file => ({ name: file.name, size: file.size }));
-      const ticket = createTicket(data, tickets);
-      tickets.unshift(ticket); persist(); dialog.close(); route('tickets');
-      toast(`Chamado #TI-${ticket.id} criado e encaminhado para ${ticket.team}.`);
-      detailDialog(ticket.id);
+      saveNewTicket(data);
     } else if (form.id === 'ticket-update-form') {
       if (state.role !== 'agent') throw new Error('Troque para a visão da equipe de TI.');
       const id = Number(form.dataset.id);

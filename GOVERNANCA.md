@@ -23,6 +23,10 @@ O nome adotado foi GOVSAFE 360, conforme a proposta da Unidade VI. Não represen
 - Não há integração com SIGD, SEMA, diretórios de pessoas, e-mail ou sistemas públicos.
 - A troca de perfil não é uma barreira de segurança.
 - Atribuir ou encaminhar um chamado altera somente dados da demonstração.
+- O assistente de TI é uma simulação por regras, sem IA externa. Não envia relatos a provedores de IA nem usa credenciais.
+- Sugestões de categoria, prioridade, dificuldade e equipe são editáveis antes da criação; o usuário precisa confirmar a abertura.
+- A dica de resolução é uma orientação inicial demonstrativa, sujeita à avaliação técnica. Não executa alterações no equipamento.
+- A sugestão original e o evento de revisão pelo solicitante são preservados no chamado; isso não representa validação técnica da equipe.
 - Anexos são referências locais; os arquivos não são enviados.
 - Publicação, criação de repositório, execução da CI e PR só devem ser apresentados como realizados quando existirem URLs e resultados verificáveis.
 

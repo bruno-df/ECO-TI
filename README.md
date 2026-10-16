@@ -22,6 +22,8 @@ npm run dev
 ## Funcionalidades
 
 - Criação com protocolo, descrição, categoria, setor, prioridade e equipe de destino.
+- Abertura simplificada por conversa com um assistente de TI demonstrativo, além do formulário manual.
+- Sugestões de categoria, equipe, prioridade, dificuldade e dica inicial de resolução, com revisão humana antes da criação.
 - Lista com busca sem distinção de acentos, filtros combinados, ordenação e paginação.
 - Quadro de chamados por status.
 - Encaminhamento, atribuição, alteração de status e prioridade.
@@ -34,6 +36,20 @@ npm run dev
 ## Escopo e limites
 
 Os perfis são uma **simulação visual**, sem autenticação ou autorização real. O armazenamento usa `localStorage` na chave `govsafe360.tickets.v1`, no navegador e origem atuais. Não existe servidor de aplicação, banco, API, envio de mensagens ou integração externa. O servidor Node é apenas um utilitário local para servir os arquivos estáticos.
+
+## Demonstrar o assistente de TI
+
+1. Clique em **Novo chamado → Assistente de TI**.
+2. Descreva a situação com suas palavras ou selecione um exemplo. Se o relato for vago, o assistente pede esclarecimento e permite responder “Não sei dizer”.
+3. Informe quem é afetado, o impacto no trabalho, quando começou, o que já tentou e seu setor. Você pode voltar uma resposta ou migrar para o formulário com o texto preenchido.
+4. Revise assunto, descrição, categoria, equipe, prioridade e dificuldade. O chamado só é criado depois de **Confirmar e criar chamado**.
+5. Na ficha criada, consulte a **Dica inicial de resolução** e a justificativa da classificação sugerida. A equipe pode corrigir a prioridade e a dificuldade; as mudanças ficam no histórico.
+
+Esta é uma **simulação de IA por regras locais** em `src/assistant.js`, sem modelo de linguagem, API ou chave. O assistente reconhece exemplos comuns de hardware, impressoras, rede, acessos e software. A prioridade combina alcance e impacto; dificuldade é uma estimativa técnica separada. Casos desconhecidos ficam em “Outros / A avaliar”. Não faz diagnóstico real nem garante a classificação correta. A identificação da simulação permanece visível na conversa e nas dicas.
+
+Exemplo: “A internet caiu no setor” → “Minha equipe” → “Impede o trabalho” sugere Rede e internet, Infraestrutura, prioridade Alta e dificuldade Alta. Se vários setores estiverem completamente parados, a sugestão é Urgente. Digitar apenas “urgente” não define essa prioridade.
+
+O relato estruturado, as sugestões iniciais, as dicas e a classificação revisada são salvos no mesmo armazenamento local. Chamados antigos continuam compatíveis. Enter envia uma resposta; Shift+Enter adiciona uma linha. O rascunho da conversa existe apenas enquanto o assistente está aberto.
 
 As referências de anexos guardam **somente nome e tamanho**, até três arquivos de 5 MB; o conteúdo dos arquivos não é enviado nem armazenado. Não use dados pessoais ou institucionais reais. Limpar os dados do navegador pode apagar os registros. Dois navegadores/dispositivos não compartilham chamados.
 
@@ -75,6 +91,8 @@ Nenhuma variável de ambiente ou credencial é necessária ao front-end. **Não 
 index.html                  Documento inicial
 src/app.js                  Interface e interações
 src/domain.js               Dados fictícios e regras testáveis
+src/assistant.js            Conversa e classificação por regras locais
+src/assistant-ui.js         Chat e revisão antes da criação
 src/icons.js                Ícones SVG locais
 src/styles.css              Layout e responsividade
 scripts/serve.mjs           Prévia estática local

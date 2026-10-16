@@ -9,7 +9,7 @@ Data de preparação: 16/10/2026, America/Cuiaba.
 | Aplicação | GOVSAFE 360 · Central de serviços de TI |
 | Tipo | Front-end estático com dados fictícios |
 | Perfis | Solicitante e equipe de TI, simulados |
-| Código local | Repositório Git nesta pasta, branch `main` |
+| Código local | Repositório Git nesta pasta; base `main` e atualização `feat/abertura-assistida` |
 | GitHub | Publicação pendente; registrar URL real após o envio |
 | Vercel | Configuração pronta; registrar URL real após o deploy |
 | Branch/PR | Fluxo documentado; PR remoto ainda não criado |
@@ -82,3 +82,27 @@ Capturas da sessão de teste:
 - [Layout de celular](evidencias/mobile.png).
 
 Limites da verificação: o teste responsivo usa largura CSS real, sem simular hardware ou Safari/iOS. A CI não foi executada no GitHub e não existe URL pública verificada nesta entrega. O conector GitHub não estava disponível para publicar, e não havia uma sessão local da Vercel configurada.
+
+## Atualização: abertura simplificada com assistente
+
+Escopo solicitado: demonstrar uma conversa para ajudar pessoas sem conhecimento técnico a abrir chamados, com classificação automática sugerida e uma dica inicial de resolução. A implementação é somente front-end, com respostas por regras locais e identificação visível de **IA simulada**.
+
+Verificações da atualização em 16/10/2026:
+
+- Sintaxe: `npm run check` aprovado, incluindo os dois módulos do assistente.
+- Testes: **28 testes aprovados, zero falhas**; os 14 testes anteriores continuam passando.
+- Os novos cenários cobrem classificação por relato, esclarecimento de informação vaga, prioridade por alcance/impacto, dificuldade separada da prioridade, tratamento de incerteza, limites de texto, dicas para sinais de risco, revisão humana, histórico e serialização compatível com chamados antigos.
+- Navegador: conversa livre sobre queda da internet no Financeiro → equipe afetada → trabalho impedido → início → tentativas → setor. A sugestão foi Rede e internet / Infraestrutura / prioridade Alta / dificuldade Alta.
+- Revisão humana: a prioridade foi alterada para Média antes de confirmar; o chamado fictício `TI-1050` foi criado com o valor revisado e preservou a sugestão inicial.
+- Chamado criado: descrição estruturada, dificuldade, dicas específicas de rede e registro de revisão no histórico exibidos na interface.
+- Persistência: recarregar manteve os 14 registros da sessão, incluindo o novo chamado assistido.
+- Mobile: assistente aberto em **390 × 844 px**, envio com Enter, pergunta de esclarecimento para relato vago e transferência do relato ao formulário manual conferidos.
+- Nenhuma requisição a provedor de IA, credencial ou backend foi adicionada.
+
+Capturas da atualização:
+
+- [Conversa e revisão da classificação](evidencias/assistente-revisao.png).
+- [Dica no chamado criado](evidencias/assistente-dica.png).
+- [Assistente em largura de celular](evidencias/assistente-mobile.png).
+
+Para reproduzir: **Novo chamado → Assistente de TI**. A confirmação final cria o registro local; as mensagens intermediárias não criam chamados. O formulário manual permanece disponível.
