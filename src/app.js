@@ -46,7 +46,7 @@ function render() {
   app.innerHTML = `
     <button class="sidebar-backdrop ${state.mobileOpen ? 'visible' : ''}" data-action="close-menu" aria-label="Fechar menu"></button>
     <aside class="sidebar ${state.mobileOpen ? 'is-open' : ''}" aria-label="Menu principal">
-      <a class="brand" href="#chamados" data-route="tickets"><span class="brand-mark">${icon('shield')}</span><span>GOVSAFE <strong>360</strong><small>CENTRAL DE SERVIÇOS</small></span></a>
+      <a class="brand" href="#chamados" data-route="tickets"><span class="brand-mark">${icon('shield')}</span><span>ECO<strong>-TI</strong><small>CENTRAL DE SERVIÇOS</small></span></a>
       <div class="workspace"><span class="workspace-mark">${icon('monitor')}</span><span>Service desk<small>Ambiente de demonstração</small></span><span class="workspace-dot"></span></div>
       <div class="nav-label">PRINCIPAL</div>
       <nav class="nav-list">
@@ -69,7 +69,7 @@ function render() {
         <div class="topbar-actions"><span class="demo-label"><span></span>Modo demonstração</span><button class="icon-button" data-action="global-search" aria-label="Buscar chamados">${icon('search')}</button><div class="notification-wrap"><button class="icon-button notification-button" data-action="notifications" aria-label="Ver atividades recentes" aria-expanded="false">${icon('bell')}<i></i></button><div class="notification-popover" id="notification-popover" hidden></div></div><span class="topbar-divider"></span><button class="profile-button" data-action="profile" aria-label="Trocar perfil de demonstração">${avatar(CURRENT_USER)}<span><strong>Bruno Fonteles</strong><small>${isRequester ? 'Solicitante' : 'Equipe de TI'}</small></span>${icon('down')}</button></div>
       </header>
       <main id="main-content" tabindex="-1"></main>
-      <footer class="page-footer"><span>GOVSAFE 360 <span class="footer-dot">·</span> Central de serviços de TI</span><span>Projeto didático independente <span class="footer-dot">·</span> Dados fictícios</span></footer>
+      <footer class="page-footer"><span>ECO-TI <span class="footer-dot">·</span> Central de serviços de TI</span><span>Projeto didático independente <span class="footer-dot">·</span> Dados fictícios</span></footer>
     </div>`;
   renderMain();
 }
@@ -87,7 +87,7 @@ function statCards() {
 }
 function renderMain() {
   const main = document.querySelector('#main-content');
-  document.title = `${({ tickets: 'Chamados', overview: 'Visão geral', teams: 'Equipes', knowledge: 'Base de conhecimento' })[state.page]} · GOVSAFE 360`;
+  document.title = `${({ tickets: 'Chamados', overview: 'Visão geral', teams: 'Equipes', knowledge: 'Base de conhecimento' })[state.page]} · ECO-TI`;
   if (state.page === 'tickets') {
     main.innerHTML = pageHeading('SEU PONTO DE CONEXÃO COM A TI', state.scope === 'mine' ? 'Meus chamados' : 'Central de chamados', 'Tudo o que você precisa para um atendimento mais simples e conectado.') + statCards() + ticketSection() + `<div class="bottom-grid">${teamSummary()}${recentActivity()}</div>`;
     renderResults();
@@ -148,7 +148,7 @@ const articles = [
   { title: 'Solicitar acesso a um sistema', category: 'Acessos', icon: 'key', description: 'Saiba quais dados informar para solicitar uma nova permissão.', paragraphs: ['Crie um chamado na categoria “Acessos” e escolha a equipe “Sistemas e acessos”. Informe o nome do sistema e o tipo de acesso necessário.', 'Descreva a atividade que depende dessa permissão e qual setor faz a solicitação. Quando necessário, a equipe poderá pedir a aprovação da pessoa responsável.', 'Nunca informe sua senha nos comentários. A demonstração não concede permissões reais nem faz qualquer integração com sistemas institucionais.'] },
   { title: 'Entenda os status do seu chamado', category: 'Primeiros passos', icon: 'activity', description: 'Do primeiro contato até a solução: entenda cada etapa do atendimento.', paragraphs: ['Aberto: sua solicitação foi registrada e aguarda triagem ou início do atendimento.', 'Em atendimento: uma pessoa da equipe está trabalhando na solicitação.', 'Aguardando: o atendimento depende de uma informação, validação ou ação adicional. Consulte os comentários para entender o próximo passo.', 'Resolvido: a equipe registrou a conclusão. O histórico do atendimento continua disponível para consulta.'] },
   { title: 'Impressora offline ou sem imprimir', category: 'Impressoras', icon: 'printer', description: 'Confira papel, conexão e fila de impressão com segurança.', paragraphs: ['Confira se a impressora está ligada, conectada e com papel. Observe se existe alguma mensagem de erro no painel.', 'Verifique se você selecionou a impressora correta. Não remova documentos de outras pessoas da fila e não desmonte o equipamento.', 'Se o problema persistir, registre um chamado com a localização da impressora, a mensagem de erro e o impacto no setor.'] },
-  { title: 'Como funciona esta demonstração', category: 'Sobre o projeto', icon: 'shield', description: 'Conheça o escopo acadêmico, os dados locais e os perfis simulados.', paragraphs: ['O GOVSAFE 360 é um projeto didático de front-end para abertura e atendimento de chamados de TI. É independente do SIGD e não possui vínculo, autorização ou integração com a SEMA.', 'Os perfis “Solicitante” e “Equipe de TI” são visões simuladas da interface. Não existe autenticação ou controle de acesso real.', 'Os dados são fictícios e armazenados no localStorage deste navegador. Não são compartilhados entre dispositivos e podem ser apagados ao limpar os dados do site.', 'Anexos guardam somente nome e tamanho do arquivo. O conteúdo não é enviado nem armazenado. Você pode exportar os registros ou restaurar a demonstração em Preferências.'] }
+  { title: 'Como funciona esta demonstração', category: 'Sobre o projeto', icon: 'shield', description: 'Conheça o escopo acadêmico, os dados locais e os perfis simulados.', paragraphs: ['O ECO-TI é um projeto didático de front-end para abertura e atendimento de chamados de TI. É independente do SIGD e não possui vínculo, autorização ou integração com a SEMA.', 'Os perfis “Solicitante” e “Equipe de TI” são visões simuladas da interface. Não existe autenticação ou controle de acesso real.', 'Os dados são fictícios e armazenados no localStorage deste navegador. Não são compartilhados entre dispositivos e podem ser apagados ao limpar os dados do site.', 'Anexos guardam somente nome e tamanho do arquivo. O conteúdo não é enviado nem armazenado. Você pode exportar os registros ou restaurar a demonstração em Preferências.'] }
 ];
 function knowledgeContent() {
   return pageHeading('RESPOSTAS QUE FACILITAM SEU DIA', 'Como podemos ajudar?', 'Orientações práticas para você resolver dúvidas e aproveitar melhor o atendimento.', false) + `<div class="knowledge-search"><label class="search-field">${icon('search')}<input id="knowledge-search" type="search" placeholder="Busque uma orientação..." value="${esc(state.knowledgeSearch)}" aria-label="Buscar na base de conhecimento" /></label><span>6 orientações para começar</span></div><div class="article-grid" id="article-results">${articleCards()}</div><div class="knowledge-callout"><span class="team-icon green">${icon('help')}</span><div><h2>Não encontrou o que precisava?</h2><p>Nossa equipe está aqui para ajudar. Conte o que está acontecendo.</p></div><button class="button button-primary" data-action="new-ticket">Abrir um chamado${icon('arrow')}</button></div>`;
@@ -230,7 +230,7 @@ document.addEventListener('click', event => {
   if (target?.dataset.category) { filterBy('category', target.dataset.category); return; }
   if (target?.dataset.article) {
     const article = articles[Number(target.dataset.article)];
-    openDialog(`${dialogHeader(article.category, article.title)}<article class="dialog-content article-body">${article.paragraphs.map(p => `<p>${esc(p)}</p>`).join('')}</article><div class="dialog-footer"><span>Base de conhecimento · GOVSAFE 360</span><button class="button button-primary" data-action="close-dialog">Entendi${icon('check')}</button></div>`); return;
+    openDialog(`${dialogHeader(article.category, article.title)}<article class="dialog-content article-body">${article.paragraphs.map(p => `<p>${esc(p)}</p>`).join('')}</article><div class="dialog-footer"><span>Base de conhecimento · ECO-TI</span><button class="button button-primary" data-action="close-dialog">Entendi${icon('check')}</button></div>`); return;
   }
   if (target?.dataset.detailTab) { detailDialog(Number(target.dataset.id), target.dataset.detailTab); return; }
   if (target?.dataset.role) {
@@ -256,11 +256,11 @@ document.addEventListener('click', event => {
       if (!popover.hidden) popover.innerHTML = `<div class="popover-title"><strong>Atividades recentes</strong><small>Movimentações locais</small></div>${visibleTickets().slice().sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)).slice(0, 3).map(t => `<button data-ticket="${t.id}">${icon('ticket')}<span><strong>${esc(t.title)}</strong><small>#TI-${t.id} · ${relativeDate(t.updatedAt)}</small></span></button>`).join('')}`;
       break;
     }
-    case 'export-json': download('govsafe360-chamados.json', JSON.stringify(visibleTickets(), null, 2), 'application/json'); toast('Dados exportados em JSON.'); break;
+    case 'export-json': download('eco-ti-chamados.json', JSON.stringify(visibleTickets(), null, 2), 'application/json'); toast('Dados exportados em JSON.'); break;
     case 'export-csv': {
       const cell = value => `"${(/^[=+@\-\t\r]/.test(String(value)) ? "'" : '') + String(value).replace(/"/g, '""')}"`;
       const rows = [['Número', 'Assunto', 'Categoria', 'Status', 'Prioridade', 'Equipe', 'Responsável', 'Solicitante', 'Setor', 'Atualizado em'], ...filterTickets(visibleTickets(), state).map(t => [`TI-${t.id}`, t.title, t.category, t.status, t.priority, t.team, t.assignee, t.requester, t.department, fullDate(t.updatedAt)])];
-      download('govsafe360-chamados.csv', '\uFEFF' + rows.map(row => row.map(cell).join(';')).join('\r\n'), 'text/csv;charset=utf-8'); toast('Lista filtrada exportada em CSV.'); break;
+      download('eco-ti-chamados.csv', '\uFEFF' + rows.map(row => row.map(cell).join(';')).join('\r\n'), 'text/csv;charset=utf-8'); toast('Lista filtrada exportada em CSV.'); break;
     }
     case 'confirm-reset': openDialog(`${dialogHeader('RESTAURAR DADOS', 'Recomeçar a demonstração?')}<div class="dialog-content"><p>Os chamados criados, comentários e alterações deste navegador serão removidos e substituídos pelos 12 exemplos fictícios.</p><p>Você pode exportar seus dados em Preferências antes de continuar.</p></div><div class="dialog-footer"><button class="button button-outline" data-action="settings">Voltar</button><button class="button button-danger" data-action="reset">Restaurar demonstração</button></div>`, 'small-dialog'); break;
     case 'reset': tickets = seedTickets(); persist(); dialog.close(); clearFilters(); toast('Demonstração restaurada.'); break;

@@ -1,37 +1,27 @@
-# Registro de escopo e autonomia
+# ECO-TI - Escopo e autonomia
 
-Data: 16/10/2026.
+Data: 16/10/2026. Agente: Codex. O enunciado menciona Claude, mas não houve execução do Claude nesta sessão; o relatório identifica a ferramenta realmente utilizada.
 
-## Decisão didática
+## Pedidos e aprovações do humano
 
-O usuário solicitou a construção rápida de um sistema de chamados de TI somente em front-end, responsivo e independente do SIGD, para uma atividade de curso. Na definição de requisitos, escolheu as visões **Solicitante e equipe de TI, com troca de visão**.
+1. Sistema de chamados de TI somente front-end, responsivo, independente do SIGD, com dados de demonstração.
+2. Visões de solicitante e equipe de TI, com troca de visão.
+3. Demonstração de assistente de TI, classificação sugerida de dificuldade/prioridade e dicas, sem exigir IA integrada.
+4. Novo nome ECO-TI, repositório público https://github.com/bruno-df/ECO-TI e as seis entregas acadêmicas.
+5. O usuário informou que autenticaria o Git e poderia concluir o login da Vercel. Isso não comprova que login, push ou deploy foram concluídos.
 
-O nome adotado foi GOVSAFE 360, conforme a proposta da Unidade VI. Não representa uma aplicação oficial da SEMA ou autorização para operar sistemas institucionais.
+## Execução pelo agente
 
-## Operações dentro do escopo
+- Implementação e renomeação do front-end, preservando a chave de armazenamento por compatibilidade.
+- Conversa e classificação por regras locais, com revisão antes da criação e histórico.
+- Testes locais e de interface, CI, configuração Vercel e evidências com dados fictícios.
+- Consulta somente ao repositório público indicado; verificação de acesso sem pedir segredos no chat.
+- Matriz de autonomia, relatório e plano de reversão. Publicação efetiva e CI são registradas no manifesto.
 
-- Criação e edição dos arquivos do protótipo na pasta do projeto.
-- Geração de dados fictícios e armazenamento apenas no navegador.
-- Verificações locais de sintaxe, regras de negócio e build.
-- Preparação de configuração para publicação na Vercel e CI no GitHub.
-- Inicialização do Git local em `main`, com identidade técnica fictícia de projeto na versão inicial.
-- Documentação de limites, evidências e roteiro de apresentação.
+Os commits locais usam identidade técnica fictícia do projeto; não representam autoria humana das alterações geradas pelo agente.
 
-## Limites explícitos
+## Limites e controle
 
-- Não há backend, credenciais, autenticação ou permissões reais.
-- Não há integração com SIGD, SEMA, diretórios de pessoas, e-mail ou sistemas públicos.
-- A troca de perfil não é uma barreira de segurança.
-- Atribuir ou encaminhar um chamado altera somente dados da demonstração.
-- O assistente de TI é uma simulação por regras, sem IA externa. Não envia relatos a provedores de IA nem usa credenciais.
-- Sugestões de categoria, prioridade, dificuldade e equipe são editáveis antes da criação; o usuário precisa confirmar a abertura.
-- A dica de resolução é uma orientação inicial demonstrativa, sujeita à avaliação técnica. Não executa alterações no equipamento.
-- A sugestão original e o evento de revisão pelo solicitante são preservados no chamado; isso não representa validação técnica da equipe.
-- Anexos são referências locais; os arquivos não são enviados.
-- Publicação, criação de repositório, execução da CI e PR só devem ser apresentados como realizados quando existirem URLs e resultados verificáveis.
+Sem backend, autenticação real, e-mail, modelo de IA externo ou integração com SIGD/SEMA. Encaminhamentos afetam só a demonstração. A classificação não é validação técnica. Anexos guardam metadados, não arquivos. Testes usam contextos novos sem contas institucionais.
 
-## Fluxo sugerido para evolução
-
-`Git local → GitHub → Vercel → testes de aceitação → branch/PR → CI → revisão`
-
-Antes de um uso real, seriam necessários autenticação, controle de acesso validado no servidor, armazenamento compartilhado, validação e auditoria no backend, política de retenção e aprovação institucional. Esses itens ficam fora da atividade de front-end.
+Veja a [matriz de cinco cenários](entrega/MATRIZ-AUTONOMIA.md) e o [plano de publicação e reversão](entrega/PUBLICACAO.md). Novos acessos, segredos e operações destrutivas fora do escopo exigem autorização específica e não foram executados.

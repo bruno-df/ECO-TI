@@ -90,7 +90,7 @@ export function analyzeRequest(answers) {
   return { mode: 'simulated', title: classification.title, description, department: answers.department || '', category: classification.category, team: classification.team, priority, difficulty, priorityReason, difficultyReason, categoryReason, tipSteps: suggestResolution(classification.category, answers.problem), originalProblem: answers.problem || '' };
 }
 export function startConversation() {
-  return { stage: 'problem', answers: {}, messages: [{ role: 'assistant', text: 'Olá! Sou o assistente de TI do GOVSAFE 360. Vou ajudar você a explicar o problema e preparar seu chamado. Não precisa conhecer termos técnicos.\n\nO que você estava tentando fazer e o que aconteceu?' }] };
+  return { stage: 'problem', answers: {}, messages: [{ role: 'assistant', text: 'Olá! Sou o assistente de TI do ECO-TI. Vou ajudar você a explicar o problema e preparar seu chamado. Não precisa conhecer termos técnicos.\n\nO que você estava tentando fazer e o que aconteceu?' }] };
 }
 export function replyToAssistant(conversation, value) {
   if (!stages.includes(conversation.stage) || conversation.stage === 'review') throw new Error('Revise o chamado ou volte uma resposta para continuar.');

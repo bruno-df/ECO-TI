@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-10-16T17:50:15.830Z",
+  "node": "v24.22.0",
+  "platform": "win32/x64",
+  "syntax": {
+    "status": "passed",
+    "files": 5
+  },
+  "unit": {
+    "status": "passed",
+    "tests": 28,
+    "exitCode": 0
+  },
+  "build": {
+    "status": "passed",
+    "directory": "dist",
+    "exitCode": 0
+  },
+  "verifiedFilesSha256": "9ccad74304dacdf9c6fc30922e631a9d0e1644ec73838ca95136db1f6b8a9c99"
+}

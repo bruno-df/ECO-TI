@@ -1,0 +1,68 @@
+{
+  "generatedAt": "2026-10-16T17:50:15.299Z",
+  "tool": "Playwright Test",
+  "version": "1.64.1",
+  "browser": "Chromium",
+  "passed": 10,
+  "failed": 0,
+  "skipped": 0,
+  "flaky": 0,
+  "durationMs": 9031.724,
+  "viewports": {
+    "desktop": "1440 x 1000",
+    "mobile": "390 x 844"
+  },
+  "scenarios": [
+    {
+      "title": "marca, busca, filtros, quadro e layout sem transbordamento",
+      "project": "desktop",
+      "status": "expected"
+    },
+    {
+      "title": "formulário manual, atribuição, comentário e persistência",
+      "project": "desktop",
+      "status": "expected"
+    },
+    {
+      "title": "assistente organiza o relato, permite revisão e salva dicas",
+      "project": "desktop",
+      "status": "expected"
+    },
+    {
+      "title": "relato vago, correção e migração ao formulário preservam os dados",
+      "project": "desktop",
+      "status": "expected"
+    },
+    {
+      "title": "visão do solicitante mostra apenas chamados próprios e oculta edição técnica",
+      "project": "desktop",
+      "status": "expected"
+    },
+    {
+      "title": "marca, busca, filtros, quadro e layout sem transbordamento",
+      "project": "mobile",
+      "status": "expected"
+    },
+    {
+      "title": "formulário manual, atribuição, comentário e persistência",
+      "project": "mobile",
+      "status": "expected"
+    },
+    {
+      "title": "assistente organiza o relato, permite revisão e salva dicas",
+      "project": "mobile",
+      "status": "expected"
+    },
+    {
+      "title": "relato vago, correção e migração ao formulário preservam os dados",
+      "project": "mobile",
+      "status": "expected"
+    },
+    {
+      "title": "visão do solicitante mostra apenas chamados próprios e oculta edição técnica",
+      "project": "mobile",
+      "status": "expected"
+    }
+  ],
+  "note": "Contextos novos, sem login, chamados e relatos fictícios; emulação mobile em Chromium, não em dispositivo físico."
+}

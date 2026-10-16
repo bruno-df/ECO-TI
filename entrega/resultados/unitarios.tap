@@ -1,0 +1,178 @@
+TAP version 13
+# Subtest: relatos comuns são classificados em categorias e equipes existentes
+ok 1 - relatos comuns são classificados em categorias e equipes existentes
+  ---
+  duration_ms: 1.4241
+  type: 'test'
+  ...
+# Subtest: equipamentos e sistemas citados como contexto não desviam a categoria principal
+ok 2 - equipamentos e sistemas citados como contexto não desviam a categoria principal
+  ---
+  duration_ms: 0.1501
+  type: 'test'
+  ...
+# Subtest: relato vago pede esclarecimento e permite não saber a resposta
+ok 3 - relato vago pede esclarecimento e permite não saber a resposta
+  ---
+  duration_ms: 0.5063
+  type: 'test'
+  ...
+# Subtest: conversa gera resumo para revisão sem criar chamado automaticamente
+ok 4 - conversa gera resumo para revisão sem criar chamado automaticamente
+  ---
+  duration_ms: 0.3028
+  type: 'test'
+  ...
+# Subtest: prioridade combina alcance e impacto, incluindo solicitações planejadas
+ok 5 - prioridade combina alcance e impacto, incluindo solicitações planejadas
+  ---
+  duration_ms: 0.341
+  type: 'test'
+  ...
+# Subtest: a palavra urgente sozinha não força prioridade máxima
+ok 6 - a palavra urgente sozinha não força prioridade máxima
+  ---
+  duration_ms: 0.1648
+  type: 'test'
+  ...
+# Subtest: dificuldade técnica e prioridade de atendimento são independentes
+ok 7 - dificuldade técnica e prioridade de atendimento são independentes
+  ---
+  duration_ms: 0.1237
+  type: 'test'
+  ...
+# Subtest: incerteza permanece explícita e não inventa diagnóstico
+ok 8 - incerteza permanece explícita e não inventa diagnóstico
+  ---
+  duration_ms: 0.1927
+  type: 'test'
+  ...
+# Subtest: mensagens vazias, excessivas e envios depois da revisão são rejeitados
+ok 9 - mensagens vazias, excessivas e envios depois da revisão são rejeitados
+  ---
+  duration_ms: 0.2396
+  type: 'test'
+  ...
+# Subtest: sinais de risco priorizam avaliação e evitam orientações de reinicialização
+ok 10 - sinais de risco priorizam avaliação e evitam orientações de reinicialização
+  ---
+  duration_ms: 0.2476
+  type: 'test'
+  ...
+# Subtest: análise revisada, dicas e dificuldade sobrevivem à serialização sem quebrar registros antigos
+ok 11 - análise revisada, dicas e dificuldade sobrevivem à serialização sem quebrar registros antigos
+  ---
+  duration_ms: 2.7863
+  type: 'test'
+  ...
+# Subtest: metadados sem revisão ou com dicas corrompidas são rejeitados
+ok 12 - metadados sem revisão ou com dicas corrompidas são rejeitados
+  ---
+  duration_ms: 0.3582
+  type: 'test'
+  ...
+# Subtest: revisão humana preserva sugestões originais e registra correção da dificuldade
+ok 13 - revisão humana preserva sugestões originais e registra correção da dificuldade
+  ---
+  duration_ms: 0.3102
+  type: 'test'
+  ...
+# Subtest: responder preserva o estado anterior para poder corrigir uma resposta
+ok 14 - responder preserva o estado anterior para poder corrigir uma resposta
+  ---
+  duration_ms: 0.1229
+  type: 'test'
+  ...
+# Subtest: os 12 dados de demonstração têm identificadores únicos e estrutura válida
+ok 15 - os 12 dados de demonstração têm identificadores únicos e estrutura válida
+  ---
+  duration_ms: 2.0387
+  type: 'test'
+  ...
+# Subtest: criação gera protocolo único e histórico com o solicitante
+ok 16 - criação gera protocolo único e histórico com o solicitante
+  ---
+  duration_ms: 0.2621
+  type: 'test'
+  ...
+# Subtest: formulário rejeita assuntos curtos, descrições insuficientes e opções desconhecidas
+ok 17 - formulário rejeita assuntos curtos, descrições insuficientes e opções desconhecidas
+  ---
+  duration_ms: 0.425
+  type: 'test'
+  ...
+# Subtest: encaminhamento registra equipe, responsável e mudança de status
+ok 18 - encaminhamento registra equipe, responsável e mudança de status
+  ---
+  duration_ms: 0.2509
+  type: 'test'
+  ...
+# Subtest: responsável deve fazer parte da equipe de destino
+ok 19 - responsável deve fazer parte da equipe de destino
+  ---
+  duration_ms: 0.1669
+  type: 'test'
+  ...
+# Subtest: salvar sem mudanças não cria eventos artificiais
+ok 20 - salvar sem mudanças não cria eventos artificiais
+  ---
+  duration_ms: 0.1029
+  type: 'test'
+  ...
+# Subtest: comentário preserva histórico e rejeita mensagens vazias ou longas
+ok 21 - comentário preserva histórico e rejeita mensagens vazias ou longas
+  ---
+  duration_ms: 0.1787
+  type: 'test'
+  ...
+# Subtest: busca não diferencia acentos e encontra protocolo ou solicitante
+ok 22 - busca não diferencia acentos e encontra protocolo ou solicitante
+  ---
+  duration_ms: 0.9338
+  type: 'test'
+  ...
+# Subtest: filtros podem ser combinados sem alterar os dados originais
+ok 23 - filtros podem ser combinados sem alterar os dados originais
+  ---
+  duration_ms: 0.7295
+  type: 'test'
+  ...
+# Subtest: meus chamados inclui somente solicitações do perfil atual
+ok 24 - meus chamados inclui somente solicitações do perfil atual
+  ---
+  duration_ms: 0.2091
+  type: 'test'
+  ...
+# Subtest: ordenação por prioridade coloca urgente antes de alta, média e baixa
+ok 25 - ordenação por prioridade coloca urgente antes de alta, média e baixa
+  ---
+  duration_ms: 0.1324
+  type: 'test'
+  ...
+# Subtest: indicadores refletem o fluxo e são consistentes para uma lista vazia
+ok 26 - indicadores refletem o fluxo e são consistentes para uma lista vazia
+  ---
+  duration_ms: 0.1714
+  type: 'test'
+  ...
+# Subtest: serialização preserva chamados, comentários e histórico
+ok 27 - serialização preserva chamados, comentários e histórico
+  ---
+  duration_ms: 0.385
+  type: 'test'
+  ...
+# Subtest: dados locais corrompidos são identificados antes de renderizar
+ok 28 - dados locais corrompidos são identificados antes de renderizar
+  ---
+  duration_ms: 0.1221
+  type: 'test'
+  ...
+1..28
+# tests 28
+# suites 0
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 114.106

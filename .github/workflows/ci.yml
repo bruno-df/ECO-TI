@@ -1,25 +1,39 @@
-name: Verificar front-end
+name: ECO-TI · testes e build
 on:
   push:
-    branches: [main]
   pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: '22'
+          cache: npm
+      - name: Instalar dependências reproduzíveis
+        run: npm ci
       - name: Verificar sintaxe
         run: npm run check
       - name: Testar regras do protótipo
         run: npm test
+      - name: Preparar Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Testar interface desktop e mobile
+        run: npm run test:e2e
       - name: Gerar arquivos estáticos
         run: npm run build
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: govsafe360-front-end
-          path: dist/
+          name: eco-ti-evidencias
+          retention-days: 14
+          path: |
+            dist/
+            playwright-report/
+            test-results/
+            entrega/resultados/playwright.json
+            entrega/prints/

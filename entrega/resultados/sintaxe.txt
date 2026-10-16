@@ -1,0 +1,5 @@
+node --check src/app.js: APROVADO (exit 0)
+node --check src/assistant-ui.js: APROVADO (exit 0)
+node --check src/assistant.js: APROVADO (exit 0)
+node --check src/domain.js: APROVADO (exit 0)
+node --check src/icons.js: APROVADO (exit 0)
