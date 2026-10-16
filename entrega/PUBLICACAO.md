@@ -8,6 +8,8 @@ A visibilidade pública foi confirmada por consulta à API pública do GitHub em
 
 O primeiro teste de envio em modo `--dry-run` encontrou ausência de autenticação local: `could not read Username ... terminal prompts disabled`. Essa verificação não publicou arquivos. O usuário informou que concluiria o login; credenciais não foram solicitadas no chat.
 
+O fluxo oficial do Git Credential Manager foi iniciado e concluído com sucesso. O commit da aplicação `2e6a042aa8cb8bbb31663bddab21d61c4b04d1aa` foi enviado à branch `main` e confirmado pela API pública. A execução [38943481645](https://github.com/bruno-df/ECO-TI/actions/runs/38943481645) terminou com `completed / success`, incluindo os testes de interface. O relatório e o pacote final podem constar em um commit posterior de documentação.
+
 Depois de autenticar o Git, o envio é feito ao remoto público indicado. Se ainda não houver remoto:
 
 ```sh

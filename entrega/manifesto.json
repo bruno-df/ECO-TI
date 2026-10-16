@@ -1,0 +1,48 @@
+{
+  "project": "ECO-TI",
+  "date": "2026-10-16",
+  "timezone": "America/Cuiaba",
+  "scope": "Protótipo acadêmico somente front-end, com dados fictícios e IA simulada por regras locais",
+  "git": {
+    "repositoryUrl": "https://github.com/bruno-df/ECO-TI",
+    "publicVerified": true,
+    "commitAplicacao": "2e6a042aa8cb8bbb31663bddab21d61c4b04d1aa",
+    "localBranch": "entrega/unidade-vi",
+    "targetBranch": "main",
+    "published": true,
+    "reason": "Envio à branch main concluído e hash confirmado pela API pública do GitHub."
+  },
+  "vercel": {
+    "status": "awaiting_login",
+    "url": null,
+    "reason": "Login da Vercel ainda não comprovado; página de autenticação aberta para o usuário.",
+    "buildCommand": "npm run build",
+    "outputDirectory": "dist"
+  },
+  "ci": {
+    "status": "Concluída com sucesso no GitHub Actions",
+    "url": "https://github.com/bruno-df/ECO-TI/actions/runs/38943481645",
+    "conclusion": "success"
+  },
+  "localTests": {
+    "unitPassed": 28,
+    "playwrightPassed": 10,
+    "syntax": "passed",
+    "build": "passed"
+  },
+  "evidence": {
+    "screenshots": [
+      "entrega/prints/01-central-eco-ti.png",
+      "entrega/prints/02-assistente-eco-ti.png"
+    ],
+    "video": "entrega/playwright/assistente-desktop.webm",
+    "trace": "entrega/playwright/assistente-desktop.trace.zip",
+    "autonomyMatrix": "entrega/MATRIZ-AUTONOMIA.md"
+  },
+  "agent": "Codex; o enunciado menciona Claude, mas não houve execução do Claude nesta sessão",
+  "report": {
+    "path": "entrega/RELATORIO-ECO-TI.pdf",
+    "pages": 4,
+    "generatedAt": "16/10/2026 13:57 (America/Cuiaba)"
+  }
+}
